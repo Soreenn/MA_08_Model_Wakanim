@@ -1,0 +1,11 @@
+SELECT COUNT(*) as catalogs FROM catalogs
+SELECT COUNT(*) as faqs FROM faqs
+SELECT COUNT(*) as homes FROM homes
+SELECT COUNT(*) as homes_contains_videos FROM homes_contains_videos
+SELECT COUNT(*) as planifications FROM planifications
+SELECT COUNT(*) as status FROM status
+SELECT COUNT(*) as subscriptions FROM subscriptions
+SELECT COUNT(*) as users FROM users
+SELECT COUNT(*) as users_pages FROM users_pages
+SELECT COUNT(*) as users_watch_videos FROM users_watch_videos
+SELECT COUNT(*) as videos FROM videos
