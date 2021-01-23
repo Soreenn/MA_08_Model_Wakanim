@@ -6,13 +6,12 @@
 -- Utilisation de la table master. 
 USE master;
 
--- Efface la base de données.
-DROP DATABASE Wakanim;
+-- Efface la base de données si elle existe, sinon, créer et utiliser.
 
--- Crée la nouvelle base de données.
-CREATE DATABASE Wakanim;
-
--- Utilise la nouvelle base de données.
+IF EXISTS(SELECT name FROM sys.databases
+WHERE name = 'Wakanim')
+DROP DATABASE Wakanim
+CREATE DATABASE Wakanim
 USE Wakanim;
 
 -- Région de toute les tables.
@@ -111,23 +110,28 @@ CREATE TABLE homes_contains_videos (
 -- Région de toutes les clées étrangères.
 ALTER TABLE users
 ADD CONSTRAINT FK_users_pages FOREIGN KEY (users_pages_id)
-REFERENCES users_pages (id);
+REFERENCES users_pages (id)
+ON DELETE CASCADE;
 
 ALTER TABLE users
 ADD CONSTRAINT FK_subscriptions FOREIGN KEY (subscriptions_id)
-REFERENCES subscriptions (id);
+REFERENCES subscriptions (id)
+ON DELETE CASCADE;
 
 ALTER TABLE users
 ADD CONSTRAINT FK_catalogs FOREIGN KEY (catalogs_id) 
-REFERENCES catalogs (id);
+REFERENCES catalogs (id)
+ON DELETE CASCADE;
 
 ALTER TABLE users
 ADD CONSTRAINT FK_homes FOREIGN KEY (homes_id) 
-REFERENCES homes (id);
+REFERENCES homes (id)
+ON DELETE CASCADE;
 
 ALTER TABLE users
 ADD CONSTRAINT FK_faqs FOREIGN KEY (faqs_id) 
-REFERENCES faqs (id);
+REFERENCES faqs (id)
+ON DELETE CASCADE;
 
 ALTER TABLE planifications
 ADD CONSTRAINT FK_videos FOREIGN KEY (videos_id)
